@@ -1,7 +1,7 @@
 # LSRichTextEditor
 
 
-![](https://raw.githubusercontent.com/lshift-de/LSRichTextEditor/master/screensht.png "LSRichTextEditor screenshot")
+![](https://github.com/marianpolek/LSRichTextEditor/blob/master/screensht.png?raw=true "LSRichTextEditor screenshot")
 
 ## Author
 
