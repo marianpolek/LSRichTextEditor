@@ -22,25 +22,25 @@
 
 #import "LSRichTextToolbar.h"
 #import "LSToggleButton.h"
+#import "LSCloseButton.h"
+#import "LSColorHelper.h"
+#import "LSColorsView.h"
 
 #define BUTTON_WITH 40
 #define BUTTON_TOP_AND_BOTTOM_BORDER 5
 #define BUTTON_SEPARATOR_SPACE 5
 
-
-@interface LSRichTextToolbar ()
+@interface LSRichTextToolbar () <LSColorsViewDelegate>
 
 @property (nonatomic, strong) LSToggleButton *buttonBold;
 @property (nonatomic, strong) LSToggleButton *buttonItalic;
 @property (nonatomic, strong) LSToggleButton *buttonUnderlined;
 @property (nonatomic, strong) LSToggleButton *buttonStrikeThrough;
+@property (nonatomic, strong) LSColorsView *buttonsWithColorButtons;
 
 @end
 
-
 @implementation LSRichTextToolbar
-
-
 
 - (instancetype)initWithFrame:(CGRect)frame withDelegate:(id <LSRichTextToolbarDelegate>)delegate andConfiguration:(LSRichTextConfiguration *)configuration
 {
@@ -81,6 +81,10 @@
     if (features & LSRichTextFeaturesStrikeThrough || features & LSRichTextFeaturesAll) {
         self.buttonStrikeThrough = [self createButtonWithTitle:@"S" andWidth:BUTTON_WITH andSelector:@selector(strikeThroughSelected:)];
     }
+    
+    if (features & LSRichTextFeaturesBackgroundColor || features & LSRichTextFeaturesAll) {
+        self.buttonsWithColorButtons = [self createButtonsWithColorsWithWidth:130];
+    }
 }
 
 - (void)setupToolbar
@@ -112,6 +116,11 @@
         [self addView:self.buttonStrikeThrough afterView:previousView withSpacing:YES];
         previousView = self.buttonStrikeThrough;
     }
+    
+    if (features & LSRichTextFeaturesBackgroundColor || features & LSRichTextFeaturesAll) {
+        [self addView:self.buttonsWithColorButtons afterView:previousView withSpacing:YES];
+        previousView = self.buttonsWithColorButtons;
+    }
 }
 
 - (LSToggleButton *)createButtonWithTitle:(NSString *)title andWidth:(NSInteger)width andSelector:(SEL)selector
@@ -119,6 +128,13 @@
     LSToggleButton *button = [[LSToggleButton alloc]initWithFrame:CGRectMake(0, 0, width, 0) andTitle:title];
     [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     return button;
+}
+
+-(LSColorsView*)createButtonsWithColorsWithWidth:(NSInteger)width{
+    
+    LSColorsView *colorsView = [[LSColorsView alloc] initWithFrame:CGRectMake(0, 0, width, 0) toolbarHeight:self.frame.size.height];
+    [colorsView setDelegate:self];
+    return colorsView;
 }
 
 - (void)addView:(UIView *)view afterView:(UIView *)otherView withSpacing:(BOOL)space
@@ -172,12 +188,9 @@
     [self.delegate richTextToolbarDidSelectStrikeThrough:sender.isActive];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)backgroundColorSelected:(UIButton *)sender withColor:(UIColor*)color
+{
+    [self.delegate richTextToolbarDidSelectBackgroundColor:YES andColor:sender.backgroundColor];
 }
-*/
 
 @end

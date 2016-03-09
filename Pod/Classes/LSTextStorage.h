@@ -83,6 +83,7 @@ typedef NS_ENUM(NSInteger, LSFontStyleType) {
  *  @param styleAttributeName the style attribute name to be changed.
  */
 - (void)applyUnderlineChangeToRange:(NSRange)range andStyleAttributeName:(NSString *)styleAttributeName;
+- (void)applyUnderlineChangeToRange:(NSRange)range andStyleAttributeName:(NSString *)styleAttributeName withValue:(UIColor*)color;
 
 /*!
  *  Starts the data detection process. The process tries to find data of the specified typ set in the

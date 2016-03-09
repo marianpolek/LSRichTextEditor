@@ -23,6 +23,7 @@
 #import "LSTextStorage.h"
 #import "LSRichTextView.h"
 #import "LSParser.h"
+#import "LSColorHelper.h"
 
 @interface LSTextStorage ()
 
@@ -40,7 +41,7 @@
     if (self = [super init]) {
         _backingStore = [NSMutableAttributedString new];
         _textView = textView;
-        _allowedTags = @[@"b", @"i", @"u", @"s"];
+        _allowedTags = @[@"b", @"i", @"u", @"s", @"color"];
     }
     return self;
 }
@@ -65,7 +66,6 @@
 
 - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str
 {
-    NSLog(@"replaceCharactersInRange:%@ withString:%@", NSStringFromRange(range), str);
 
     [self beginEditing];
     [_backingStore replaceCharactersInRange:range withString:str];
@@ -77,7 +77,6 @@
 
 - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range
 {
-    NSLog(@"setAttributes:%@ range:%@", attrs, NSStringFromRange(range));
     
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:attrs];
     
@@ -145,7 +144,7 @@
              fromSourceText:(NSAttributedString *)attributedText
 {
     __block NSMutableAttributedString *resultString = [[NSMutableAttributedString alloc] init];
-    
+
     if (currentNode.tagName) {
         [currentNode.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [self processParsedString:(LSNode *)obj resultString:&resultString fromSourceText:attributedText];
@@ -158,7 +157,12 @@
 
         if (self.textView.richTextConfiguration.configurationFeatures & ~LSRichTextFeaturesPlainText) {
             [currentNode.tagNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                if ([self.allowedTags containsObject:obj]) {
+                NSString *searchingTag = obj;
+                if([obj containsString:@"="]){
+                    NSArray *myArray = [obj componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
+                    searchingTag = myArray[0];
+                }
+                if ([self.allowedTags containsObject:searchingTag]) {
                     NSRange currentRange = NSMakeRange(0, resultString.length);
                     NSDictionary *newAttributes = [self createActualAttributeStyle:currentRange
                                                                     forTagName:obj
@@ -260,6 +264,34 @@
     }
 }
 
+- (void)applyUnderlineChangeToRange:(NSRange)range andStyleAttributeName:(NSString *)styleAttributeName withValue:(UIColor*)color
+{
+    NSDictionary *currentAttributesDict = (range.length > 0) ? [_backingStore attributesAtIndex:range.location effectiveRange:nil]
+    :  self.textView.typingAttributes;
+    
+    NSDictionary *newAttributes;
+    
+    if([color isEqual:[UIColor clearColor]]){
+        newAttributes = nil;
+    }else{
+        newAttributes = @{styleAttributeName: color};
+    }
+    
+    if (range.length > 0) {
+        if(newAttributes != nil){
+            [self addAttributes:newAttributes range:range];
+        }else{
+            [self removeAttribute:NSBackgroundColorAttributeName range:range];
+        }
+    } else {
+        if(newAttributes != nil){
+            NSMutableDictionary *dictionary = [[self.textView typingAttributes] mutableCopy];
+            [dictionary setObject:[newAttributes valueForKey:styleAttributeName] forKey:styleAttributeName];
+            [self.textView setTypingAttributes:dictionary];
+        }
+    }
+}
+
 #pragma mark - formatter helpers
 
 - (NSDictionary *)createActualAttributeStyle:(NSRange)inRange forTagName:(NSString *)tagName withText:(NSAttributedString *)attributedText
@@ -267,6 +299,14 @@
     UIFont *currentFont = [self fontAtIndex:inRange.location withinText:attributedText];
     NSDictionary* currentAttributes = @{};
 
+    NSString *colorHexString = @"";
+    if([tagName containsString:@"="]){
+        NSArray *myArray = [tagName componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
+        tagName = myArray[0];
+        colorHexString = myArray[1];
+    }
+    
+    
     if ([tagName isEqualToString:@"b"]) {
         currentAttributes = [self createAttributesForFontStyle:currentFont
                                                      withTrait:UIFontDescriptorTraitBold];
@@ -278,8 +318,11 @@
                                                         forKey:NSUnderlineStyleAttributeName];
     } else if ([tagName isEqualToString:@"s"]) {
         currentAttributes = @{ NSStrikethroughStyleAttributeName : [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+        
+    } else if ([tagName isEqualToString:@"color"]) {
+        currentAttributes = @{ NSBackgroundColorAttributeName : [LSColorHelper colorFromHexString:colorHexString]};
     }
-
+    
     return currentAttributes;
 }
 
@@ -379,6 +422,10 @@
         if ([[attributes objectForKey:NSStrikethroughStyleAttributeName] intValue] == 1) {
             returnFontString = [NSString stringWithFormat:@"[s]%@[/s]", returnFontString];
         }
+        
+        if([attributes objectForKey:NSBackgroundColorAttributeName]){
+            returnFontString = [NSString stringWithFormat:@"[color=#%@]%@[/color]", [LSColorHelper hexStringForColor:[attributes objectForKey:NSBackgroundColorAttributeName]], returnFontString];
+        }
 
         [returnString appendString:returnFontString];
     }];
@@ -428,6 +475,7 @@
                  !(fontDescriptorSymbolicTraits & UIFontDescriptorTraitBold)) {
                  returnFontString = [NSString stringWithFormat:@"[/b]%@", returnFontString];
              }
+             
          }
          
          if ((fontDescriptorSymbolicTraits & UIFontDescriptorTraitBold) &&

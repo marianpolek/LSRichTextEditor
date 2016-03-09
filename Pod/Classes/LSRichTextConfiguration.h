@@ -49,6 +49,7 @@ typedef NS_ENUM(NSUInteger, LSRichTextFeatures) {
     LSRichTextFeaturesItalic        = 1 << 4,
     LSRichTextFeaturesUnderlined    = 1 << 5,
     LSRichTextFeaturesStrikeThrough = 1 << 6,
+    LSRichTextFeaturesBackgroundColor= 1 << 7,
     LSRichTextFeaturesAll           = 1 << 20
 };
 

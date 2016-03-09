@@ -317,6 +317,11 @@
     [self.customTextStorage applyUnderlineChangeToRange:self.selectedRange andStyleAttributeName:NSStrikethroughStyleAttributeName];
 }
 
+-(void)richTextToolbarDidSelectBackgroundColor:(BOOL)isActive andColor:(UIColor *)color
+{
+    [self.customTextStorage applyUnderlineChangeToRange:self.selectedRange andStyleAttributeName:NSBackgroundColorAttributeName withValue:color];
+}
+
 #pragma mark - NSTextStorageDelegate methods
 
 - (void)textStorage:(NSTextStorage *)textStorage didProcessEditing:(NSTextStorageEditActions)editedMask range:(NSRange)editedRange changeInLength:(NSInteger)delta

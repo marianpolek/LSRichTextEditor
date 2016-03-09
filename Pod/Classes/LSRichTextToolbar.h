@@ -35,6 +35,7 @@
 - (void)richTextToolbarDidSelectItalic:(BOOL)isActive;
 - (void)richTextToolbarDidSelectUnderlined:(BOOL)isActive;
 - (void)richTextToolbarDidSelectStrikeThrough:(BOOL)isActive;
+- (void)richTextToolbarDidSelectBackgroundColor:(BOOL)isActive andColor:(UIColor*)color;
 
 @end
 
