@@ -61,7 +61,12 @@
             currentNode = newContentNode;
 
         } else if (token.type == LSTokenTypeCloseTag) {
-            if ([currentNode.tagName isEqual:token.value]) {
+            NSString *searchText = currentNode.tagName;
+            if([currentNode.tagName containsString:@"="]){
+                NSArray *myArray = [currentNode.tagName componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
+                searchText = myArray[0];
+            }
+            if ([searchText isEqual:token.value]) {
                 currentNode = currentNode.parentNode;
             } else {
                 if ([currentNode.tagNames containsObject:token.value]) {
@@ -121,7 +126,6 @@
         [self scanOpenTag:&value andKey:&key andAttributes:&attributes];
         
         if (!didScan) {
-            NSLog(@"Couldn't parse: %lu", (unsigned long)self.scanner.scanLocation);
             return nil;
         }
         
@@ -141,7 +145,7 @@
     
     if (didScan && ([*out rangeOfString:@"="].length > 0)) {
         NSString *tagString = [*out copy];
-        
+                
         NSRange firstSeparatorRange = [tagString rangeOfString:@" "];
         if (firstSeparatorRange.length > 0) {
             *out = [tagString substringWithRange:NSMakeRange(0, firstSeparatorRange.location)];
@@ -164,6 +168,7 @@
 
                                  NSRange keyRange = [match rangeAtIndex:1];
                                  NSRange valueRange = [match rangeAtIndex:2];
+                                 
                                  [*attributes setValue:[attributesString substringWithRange:valueRange]
                                                 forKey:[attributesString substringWithRange:keyRange]];
                              }];
