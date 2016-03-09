@@ -1,11 +1,13 @@
 # LSRichTextEditor
 
+I added background color for selected text to original LSRichTextEditor from lshift-de/LSRichTextEditor
 
 ![](https://github.com/marianpolek/LSRichTextEditor/blob/master/screensht.png?raw=true "LSRichTextEditor screenshot")
 
 ## Author
 
 Peter Lieder, <peter@lshift.de>
+
 FORKED FROM ME
 
 ## License
