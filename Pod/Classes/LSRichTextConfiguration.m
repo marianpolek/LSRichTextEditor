@@ -40,6 +40,21 @@
     return [self initWithTextFeatures:LSRichTextFeaturesNone];
 }
 
+- (void)setInitialAttributes
+{
+    NSMutableDictionary *mutableAttributes = [NSMutableDictionary dictionary];
+    
+    [mutableAttributes setObject:[UIFont systemFontOfSize:12] forKey:NSFontAttributeName];
+    [mutableAttributes setObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    [mutableAttributes setObject:[UIColor clearColor] forKey:NSBackgroundColorAttributeName];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    
+    [mutableAttributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+    
+    self.initialTextAttributes = mutableAttributes;
+}
 
 - (void)setInitialAttributesFromTextView:(UITextView *)textView
 {

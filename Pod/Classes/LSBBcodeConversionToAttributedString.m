@@ -18,6 +18,8 @@
     if(self = [super init]){
         
         _richTextConfiguration = [[LSRichTextConfiguration alloc] initWithTextFeatures:LSRichTextFeaturesAll];
+        [self.richTextConfiguration setInitialAttributes];
+
     }
     
     return self;
