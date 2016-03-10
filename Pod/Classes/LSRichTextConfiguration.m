@@ -40,16 +40,24 @@
     return [self initWithTextFeatures:LSRichTextFeaturesNone];
 }
 
-- (void)setInitialAttributes
+- (void)setInitialAttributesFromLabel:(UILabel*)label
 {
     NSMutableDictionary *mutableAttributes = [NSMutableDictionary dictionary];
     
-    [mutableAttributes setObject:[UIFont systemFontOfSize:12] forKey:NSFontAttributeName];
-    [mutableAttributes setObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
-    [mutableAttributes setObject:[UIColor clearColor] forKey:NSBackgroundColorAttributeName];
+    if (label.font) {
+        [mutableAttributes setObject:label.font forKey:NSFontAttributeName];
+    }
+    
+    if (label.textColor) {
+        [mutableAttributes setObject:label.textColor forKey:NSForegroundColorAttributeName];
+    }
+    
+    if (label.backgroundColor) {
+        [mutableAttributes setObject:label.backgroundColor forKey:NSBackgroundColorAttributeName];
+    }
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.alignment = NSTextAlignmentLeft;
+    paragraphStyle.alignment = label.textAlignment;
     
     [mutableAttributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
     

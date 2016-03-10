@@ -15,5 +15,6 @@
 @property (nonatomic, strong, readonly) LSRichTextConfiguration *richTextConfiguration;
 
 -(NSAttributedString*)attributedStringFromBbCodeString:(NSString*)bbCodeString;
+-(instancetype)initWithLabel:(UILabel*)label;
 
 @end

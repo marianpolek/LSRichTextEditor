@@ -107,7 +107,7 @@ typedef NS_ENUM(NSUInteger, LSRichTextFeatures) {
  *
  * @param UITextView The text view component containing the parameters.
  */
-- (void)setInitialAttributes;
+- (void)setInitialAttributesFromLabel:(UILabel*)label;
 - (void)setInitialAttributesFromTextView:(UITextView *)textView;
 
 /*!

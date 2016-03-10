@@ -13,21 +13,36 @@
 @implementation LSBBcodeConversionToAttributedString
 
 
--(instancetype)init{
+/// EXAMPLE OF USAGE
+//
+//    UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, 250, 100)];
+//    [testLabel setBackgroundColor:[UIColor whiteColor]];
+//    [testLabel setNumberOfLines:0];
+//
+//    LSBBcodeConversionToAttributedString *test = [[LSBBcodeConversionToAttributedString alloc] initWithLabel:testLabel];
+//    NSAttributedString *attString = [test attributedStringFromBbCodeString:@"hello [b]this[/b] is [color=#ff00cc]example[/color] of using conversion [u]from bbcode[/u] to attributed string"];
+//    [testLabel setAttributedText:attString];
+//    [self.view addSubview:testLabel];
+//    CGSize size = [testLabel sizeThatFits:CGSizeMake(250, 5000)];
+//    CGRect frame = testLabel.frame;
+//    frame.size.height = size.height;
+//    [testLabel setFrame:frame];
+//
+
+
+-(instancetype)initWithLabel:(UILabel*)label{
     
     if(self = [super init]){
         
         _richTextConfiguration = [[LSRichTextConfiguration alloc] initWithTextFeatures:LSRichTextFeaturesAll];
-        [self.richTextConfiguration setInitialAttributes];
-
+        [self.richTextConfiguration setInitialAttributesFromLabel:label];
+        
     }
     
     return self;
 }
 
 -(NSAttributedString*)attributedStringFromBbCodeString:(NSString*)bbCodeString{
-    
-    NSLog(@"1- %@",bbCodeString);
     
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:bbCodeString];
     
@@ -38,7 +53,6 @@
     
     [self processParsedString:rootNode resultString:&resultString fromSourceText:attributedText];
     
-    NSLog(@"2-- %@",resultString);
     return resultString;
 }
 
