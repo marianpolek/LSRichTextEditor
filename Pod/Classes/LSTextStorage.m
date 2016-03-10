@@ -41,7 +41,7 @@
     if (self = [super init]) {
         _backingStore = [NSMutableAttributedString new];
         _textView = textView;
-        _allowedTags = @[@"b", @"i", @"u", @"s", @"color"];
+        _allowedTags = @[@"b", @"i", @"u", @"s", @"bgcolor"];
     }
     return self;
 }
@@ -319,7 +319,7 @@
     } else if ([tagName isEqualToString:@"s"]) {
         currentAttributes = @{ NSStrikethroughStyleAttributeName : [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
         
-    } else if ([tagName isEqualToString:@"color"]) {
+    } else if ([tagName isEqualToString:@"bgcolor"]) {
         currentAttributes = @{ NSBackgroundColorAttributeName : [LSColorHelper colorFromHexString:colorHexString]};
     }
     
@@ -424,7 +424,7 @@
         }
         
         if([attributes objectForKey:NSBackgroundColorAttributeName]){
-            returnFontString = [NSString stringWithFormat:@"[color=#%@]%@[/color]", [LSColorHelper hexStringForColor:[attributes objectForKey:NSBackgroundColorAttributeName]], returnFontString];
+            returnFontString = [NSString stringWithFormat:@"[bgcolor=#%@]%@[/bgcolor]", [LSColorHelper hexStringForColor:[attributes objectForKey:NSBackgroundColorAttributeName]], returnFontString];
         }
 
         [returnString appendString:returnFontString];

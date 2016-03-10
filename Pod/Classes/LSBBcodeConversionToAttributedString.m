@@ -20,7 +20,7 @@
 //    [testLabel setNumberOfLines:0];
 //
 //    LSBBcodeConversionToAttributedString *test = [[LSBBcodeConversionToAttributedString alloc] initWithLabel:testLabel];
-//    NSAttributedString *attString = [test attributedStringFromBbCodeString:@"hello [b]this[/b] is [color=#ff00cc]example[/color] of using conversion [u]from bbcode[/u] to attributed string"];
+//    NSAttributedString *attString = [test attributedStringFromBbCodeString:@"hello [b]this[/b] is [bgcolor=#ff00cc]example[/bgcolor] of using conversion [u]from bbcode[/u] to attributed string"];
 //    [testLabel setAttributedText:attString];
 //    [self.view addSubview:testLabel];
 //    CGSize size = [testLabel sizeThatFits:CGSizeMake(250, 5000)];
@@ -77,7 +77,7 @@
                 NSArray *myArray = [obj componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
                 searchingTag = myArray[0];
             }
-            if ([@[@"b", @"i", @"u", @"s", @"color"] containsObject:searchingTag]) {
+            if ([@[@"b", @"i", @"u", @"s", @"bgcolor"] containsObject:searchingTag]) {
                 NSRange currentRange = NSMakeRange(0, resultString.length);
                 NSDictionary *newAttributes = [self createActualAttributeStyle:currentRange
                                                                     forTagName:obj
@@ -115,7 +115,7 @@
     } else if ([tagName isEqualToString:@"s"]) {
         currentAttributes = @{ NSStrikethroughStyleAttributeName : [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
         
-    } else if ([tagName isEqualToString:@"color"]) {
+    } else if ([tagName isEqualToString:@"bgcolor"]) {
         currentAttributes = @{ NSBackgroundColorAttributeName : [LSColorHelper colorFromHexString:colorHexString]};
     }
     
