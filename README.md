@@ -2,6 +2,12 @@
 
 I added background color for selected text to original LSRichTextEditor from lshift-de/LSRichTextEditor
 
+# USAGE
+
+```
+pod 'LSRichTextEditor', :git => 'https://github.com/marianpolek/LSRichTextEditor.git'
+```
+
 <img src="https://github.com/marianpolek/LSRichTextEditor/blob/master/screensht.png?raw=true" width="350">
 
 ## Author
