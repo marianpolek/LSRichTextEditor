@@ -2,7 +2,7 @@
 
 I added background color for selected text to original LSRichTextEditor from lshift-de/LSRichTextEditor
 
-# USAGE
+## USAGE
 
 ```
 pod 'LSRichTextEditor', :git => 'https://github.com/marianpolek/LSRichTextEditor.git'
