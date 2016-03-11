@@ -37,18 +37,8 @@
     [self.layer setBorderColor:[[UIColor colorWithRed:205.0f / 255.0f green:205.0f / 255.0f blue:205.0f / 255.0f alpha:1.0f] CGColor]];
     
     NSInteger buttonsHeight = toolbarHeight - (2*BUTTON_TOP_AND_BOTTOM_BORDER);
-    NSInteger buttonsWidth = 40;
+    NSInteger buttonsWidth = [LSColorsView buttonWidth];
     
-    NSArray *colorsArray = @[[UIColor clearColor],
-                             [LSColorHelper colorFromHexString:@"#ABFFF7"],
-                             [LSColorHelper colorFromHexString:@"#ABFFCB"],
-                             [LSColorHelper colorFromHexString:@"#E7FFAB"],
-                             [LSColorHelper colorFromHexString:@"#FFD5AB"],
-                             [UIColor redColor],
-                             [UIColor greenColor],
-                             [UIColor blueColor],
-                             [UIColor orangeColor],
-                             [LSColorHelper colorFromHexString:@"#DDABFF"]];
     
     LSCloseButton *closeButton = [LSCloseButton buttonWithType:UIButtonTypeCustom];
     [closeButton setBackgroundColor:[UIColor clearColor]];
@@ -56,10 +46,10 @@
     [closeButton addTarget:self action:@selector(backgroundColorSelected:withColor:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:closeButton];
     
-    for(int i=1; i < [colorsArray count]; i++){
+    for(int i=1; i < [[LSColorsView listOfColors] count]; i++){
         
         UIButton *colorButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [colorButton setBackgroundColor:colorsArray[i]];
+        [colorButton setBackgroundColor:[LSColorsView listOfColors][i]];
         [colorButton setFrame:CGRectMake(i*buttonsWidth, 0, buttonsWidth, buttonsHeight)];
         [colorButton addTarget:self action:@selector(backgroundColorSelected:withColor:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:colorButton];
@@ -74,6 +64,26 @@
     if(self.delegate){
         [self.delegate backgroundColorSelected:sender withColor:color];
     }
+}
+
+#pragma configurations
+
++(NSInteger)buttonWidth{
+    return 40;
+}
+
++(NSArray*)listOfColors{
+    
+    return @[[UIColor clearColor],
+             [LSColorHelper colorFromHexString:@"#ABFFF7"],
+             [LSColorHelper colorFromHexString:@"#ABFFCB"],
+             [LSColorHelper colorFromHexString:@"#E7FFAB"],
+             [LSColorHelper colorFromHexString:@"#FFD5AB"],
+             [UIColor redColor],
+             [UIColor greenColor],
+             [UIColor blueColor],
+             [UIColor orangeColor],
+             [LSColorHelper colorFromHexString:@"#DDABFF"]];
 }
 
 @end

@@ -193,4 +193,18 @@
     [self.delegate richTextToolbarDidSelectBackgroundColor:YES andColor:sender.backgroundColor];
 }
 
+#pragma layoutSubviews
+
+-(void)layoutSubviews{
+    
+    [super layoutSubviews];
+    
+    NSInteger colorsViewWidth = self.frame.size.width - (2*BUTTON_SEPARATOR_SPACE) - self.buttonStrikeThrough.frame.origin.x - self.buttonStrikeThrough.frame.size.width;
+    if(colorsViewWidth > ([LSColorsView listOfColors].count * [LSColorsView buttonWidth])){
+        colorsViewWidth = [LSColorsView listOfColors].count * [LSColorsView buttonWidth];
+    }
+    [self.buttonsWithColorButtons setFrame:CGRectMake(self.buttonsWithColorButtons.frame.origin.x, self.buttonsWithColorButtons.frame.origin.y,colorsViewWidth , self.buttonsWithColorButtons.frame.size.height)];
+
+}
+
 @end

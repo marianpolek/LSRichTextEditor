@@ -19,5 +19,7 @@
 @property (nonatomic, assign) id<LSColorsViewDelegate> delegate;
 
 -  (id)initWithFrame:(CGRect)aRect toolbarHeight:(NSInteger)toolbarHeight;
++(NSInteger)buttonWidth;
++(NSArray*)listOfColors;
 
 @end
