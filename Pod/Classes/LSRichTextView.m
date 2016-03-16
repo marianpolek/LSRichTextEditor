@@ -322,6 +322,28 @@
     [self.customTextStorage applyUnderlineChangeToRange:self.selectedRange andStyleAttributeName:NSBackgroundColorAttributeName withValue:color];
 }
 
+-(void)changeOnlyFontSize:(NSInteger)fontSize{
+    
+    NSMutableAttributedString *res = [self.customTextStorage giveMeBackingStore];
+    
+    [res beginEditing];
+    __block BOOL found = NO;
+    [res enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, res.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+        if (value) {
+            UIFont *oldFont = (UIFont *)value;
+            UIFont *newFont = [oldFont fontWithSize:fontSize];
+            [res removeAttribute:NSFontAttributeName range:range];
+            [res addAttribute:NSFontAttributeName value:newFont range:range];
+            found = YES;
+        }
+    }];
+    if (!found) {
+        
+    }
+    [res endEditing];
+    [self setAttributedText:res];
+}
+
 #pragma mark - NSTextStorageDelegate methods
 
 - (void)textStorage:(NSTextStorage *)textStorage didProcessEditing:(NSTextStorageEditActions)editedMask range:(NSRange)editedRange changeInLength:(NSInteger)delta

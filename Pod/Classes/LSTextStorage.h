@@ -98,4 +98,6 @@ typedef NS_ENUM(NSInteger, LSFontStyleType) {
  */
 - (void)setAttributedText:(NSAttributedString *)attributedText;
 
+-(NSMutableAttributedString*)giveMeBackingStore;
+
 @end

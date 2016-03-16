@@ -46,6 +46,10 @@
     return self;
 }
 
+-(NSMutableAttributedString*)giveMeBackingStore{
+    return _backingStore;
+}
+
 #pragma mark - overrides of NSTextStorage
 
 - (NSString *)string

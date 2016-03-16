@@ -87,5 +87,6 @@
  *  @param color UIColor the new color object to be set.
  */
 - (void)setHighlightColor:(UIColor *)color;
+-(void)changeOnlyFontSize:(NSInteger)fontSize;
 
 @end
