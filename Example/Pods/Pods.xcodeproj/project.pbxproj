@@ -28,6 +28,12 @@
 		409435B4AEA9DC5CD528509299026001 /* OCMObserverRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E0D8DE538FDA5D3E664C5ADD23CC24E5 /* OCMObserverRecorder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		416C2DD9E7038656F7A4281A2EFF699B /* OCPartialMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C50BBB18EFAF1190419B602AE585FE81 /* OCPartialMockObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		42498CF985FE0CE9DD90DD683266CC18 /* OCMInvocationExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F882D3201BE8599F20865B78F0FE9 /* OCMInvocationExpectation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		468B2EBF235354660091E563 /* LSColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 468B2EBD235354660091E563 /* LSColorHelper.m */; };
+		468B2EC0235354660091E563 /* LSColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 468B2EBE235354660091E563 /* LSColorHelper.h */; };
+		468B2EC3235354760091E563 /* LSColorsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 468B2EC1235354750091E563 /* LSColorsView.m */; };
+		468B2EC4235354760091E563 /* LSColorsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 468B2EC2235354760091E563 /* LSColorsView.h */; };
+		468B2EC7235354860091E563 /* LSCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 468B2EC5235354860091E563 /* LSCloseButton.m */; };
+		468B2EC8235354860091E563 /* LSCloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 468B2EC6235354860091E563 /* LSCloseButton.h */; };
 		48DDD9BE0005FDDF9C91EBE57B03D1D4 /* OCMIndirectReturnValueProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E808E4218926AE48D170B4FBDE4CFC5E /* OCMIndirectReturnValueProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		49DB462C455568591A759157D2850B86 /* OCObserverMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EB55F4C5E7223618F9F856AB203E40AA /* OCObserverMockObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4E91FC9241DAF2AFAC03983082025C10 /* OCMReturnValueProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D1FAB30430DED5EA1A357096C2D353B /* OCMReturnValueProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -175,6 +181,12 @@
 		42215B7B41E6269E6C9FBEB695D7686E /* NSValue+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+OCMAdditions.h"; path = "Source/OCMock/NSValue+OCMAdditions.h"; sourceTree = "<group>"; };
 		4380441697183E5A977D7529FA30A1CF /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMAdditions.h"; path = "Source/OCMock/NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
 		45F24CB350668777B35C4BEF33E37F64 /* LSRichTextToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LSRichTextToolbar.h; sourceTree = "<group>"; };
+		468B2EBD235354660091E563 /* LSColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSColorHelper.m; sourceTree = "<group>"; };
+		468B2EBE235354660091E563 /* LSColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSColorHelper.h; sourceTree = "<group>"; };
+		468B2EC1235354750091E563 /* LSColorsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSColorsView.m; sourceTree = "<group>"; };
+		468B2EC2235354760091E563 /* LSColorsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSColorsView.h; sourceTree = "<group>"; };
+		468B2EC5235354860091E563 /* LSCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCloseButton.m; sourceTree = "<group>"; };
+		468B2EC6235354860091E563 /* LSCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCloseButton.h; sourceTree = "<group>"; };
 		499D37C430DE2232B43064AC5871D305 /* Pods-LSRichTextEditor_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LSRichTextEditor_Example-dummy.m"; sourceTree = "<group>"; };
 		4C25193A5E9C61D1794961715EDE9167 /* NSMethodSignature+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMethodSignature+OCMAdditions.m"; path = "Source/OCMock/NSMethodSignature+OCMAdditions.m"; sourceTree = "<group>"; };
 		4EB44E52A49ABE3EE78B5BF61F856C84 /* Pods-LSRichTextEditor_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LSRichTextEditor_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -555,6 +567,12 @@
 				733D9E21EDE7FF2C00403D4BAA6259BD /* LSTextStorage.m */,
 				B919935AC84A0A203A5B4B4D0582CD08 /* LSToggleButton.h */,
 				9A0315B1597D41ADAEC5EB62220EB1C4 /* LSToggleButton.m */,
+				468B2EBE235354660091E563 /* LSColorHelper.h */,
+				468B2EBD235354660091E563 /* LSColorHelper.m */,
+				468B2EC2235354760091E563 /* LSColorsView.h */,
+				468B2EC1235354750091E563 /* LSColorsView.m */,
+				468B2EC6235354860091E563 /* LSCloseButton.h */,
+				468B2EC5235354860091E563 /* LSCloseButton.m */,
 				1AC2F15A85E9244993B6D8CAF726F671 /* Parser */,
 			);
 			path = Classes;
@@ -627,8 +645,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC6623A9229A70ECAF1A4FA6B7A45DC7 /* LSNode.h in Headers */,
+				468B2EC0235354660091E563 /* LSColorHelper.h in Headers */,
+				468B2EC8235354860091E563 /* LSCloseButton.h in Headers */,
 				27EE35EF3425FFF4206A1131BBA99B0E /* LSParser.h in Headers */,
 				A2AF3A494181FE2E2A1F3B1EAF2AFE9B /* LSRichTextConfiguration.h in Headers */,
+				468B2EC4235354760091E563 /* LSColorsView.h in Headers */,
 				BD1E34BEDAB09EB19435684BB0D256FE /* LSRichTextEditor-umbrella.h in Headers */,
 				BFA3879C9DD1998E3A61471412C6BDA4 /* LSRichTextToolbar.h in Headers */,
 				08DCA140989CF565406B6D19D673D06D /* LSRichTextView.h in Headers */,
@@ -738,14 +759,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 1110;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = 3C3E9ABE29D05D4E43B71FD048790869 /* Products */;
@@ -785,14 +807,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E062F6ADB317FA8EB61B28296B26B3D6 /* LSNode.m in Sources */,
+				468B2EC3235354760091E563 /* LSColorsView.m in Sources */,
 				3BAAF558421A00287C86B66D451A1035 /* LSParser.m in Sources */,
 				0FFEE5481122E7333849C99A3E4141A1 /* LSRichTextConfiguration.m in Sources */,
 				D463462752927C0A6640877E1818B1B1 /* LSRichTextEditor-dummy.m in Sources */,
 				BF730435B46EAFF3251384167ABC30F7 /* LSRichTextToolbar.m in Sources */,
 				C84C474D709A279ADD6DDA7921456016 /* LSRichTextView.m in Sources */,
+				468B2EBF235354660091E563 /* LSColorHelper.m in Sources */,
 				FBABABF284EE2B76705F4921C26A3E16 /* LSTextStorage.m in Sources */,
 				CB03FBA85E3B1DC3BA02A2A6E2B0A123 /* LSToggleButton.m in Sources */,
 				C3865E995FB3E93E833B027FEBECE60E /* LSToken.m in Sources */,
+				468B2EC7235354860091E563 /* LSCloseButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,23 +1151,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1166,22 +1204,35 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
